@@ -1,16 +1,29 @@
-import express, { response } from "express";
+import express from "express";
 
 const app = express(); //chamando express pois ele é uma função
 
-app.get("/ads", (request, response) => {
+//rota de busca por informações dos games
+app.get("/games", (request, response) => {
   //.get para atribuirmos o caminho das pastas para acesso ex: localhost:3001/ads, ao acessar esse caminho uma função será executada
-  return response.json([//o response é usado para retornar algo para a função 
-  //.json() retorna uma informação tipo json
-    {"id": 1, "name": "Anuncio 1"},
-    {"id": 2, "name": "Anuncio 2"},
-    {"id": 3, "name": "Anuncio 3"},
-    {"id": 4, "name": "Anuncio 4"},
-  ])  
+  return response.json([
+    //o response é usado para retornar algo para a função
+    //.json() retorna uma informação tipo json
+  ]);
+});
+
+//rota pra criação dos anuncios dos usuarios
+app.post("/ads", (request, response) => {
+  return response.status(201).json([]);
+});
+
+//rota de acessar o game de determinado anuncio
+app.get("/games/:id/ads", (request, response) => {
+  return response.json([]);
+});
+
+//rota para acessar o discord de determinado anuncio
+app.get("/ads/:id/discord", (request, response) => {
+  return response.json([]);
 });
 
 app.listen(3001); //colocando na porta 3001
